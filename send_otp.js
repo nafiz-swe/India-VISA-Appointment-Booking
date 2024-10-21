@@ -1,10 +1,15 @@
-//বিসমিল্লাহির রাহমানির রহিম
-//بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم ِ
-//ইয়া আল্লাহ, এপয়েন্টমেন্টের জন্য যেন স্লট পাই, রহম করুন আমার উপর। [আমিন]
+/*
+বিসমিল্লাহির রাহমানির রহিম
+بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم ِ
+ইয়া আল্লাহ, এপয়েন্টমেন্টের জন্য যেন স্লট পাই, রহম করুন আমার উপর। [আমিন]
+*/
+
 //Assalamualaikum, Ich bin Nafizul Islam (NöYöN) [Deutsch]
 
-//[https://payment.ivacbd.com]  --  First make sure to select or fill all your categories correctly and also select the payment method. Then use developer tools.
-//use developer tools and console. If console doesn't work, use paste permission "allow pasting" then paste all code. Confirm by pressing enter key.
+/*
+[https://payment.ivacbd.com]  --  First make sure to select or fill all your categories correctly and also select the payment method. Then use developer tools.
+use developer tools and console. If console doesn't work, use paste permission "allow pasting" then paste all code. Confirm by pressing enter key.
+*/
 
 (function() {
     // Function to randomly click the "Send OTP" button if it exists
