@@ -4,7 +4,7 @@
 //Assalamualaikum, Ich bin Nafizul Islam (NöYöN) [Deutsch]
 
 
-// [https://payment.ivacbd.com] Using Developer Tools and Cosole. If Console not working, use allow pasting command then pest all code. Confirm by pressing enter key.
+// [https://payment.ivacbd.com] use developer tools and console. If console doesn't work, use paste permission "allow pasting" then paste all code. Confirm by pressing enter key.
 //First make sure to select or fill all your categories correctly and also select the payment method. Then use developer tools.
 
 (function() {
