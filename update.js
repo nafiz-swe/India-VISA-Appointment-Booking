@@ -12,6 +12,42 @@ Use developer tools and console. If console doesn't work, use paste permission "
 */
 
 (function() {
+    // Add buttons to the page
+    const startButton = document.createElement('button');
+    const stopButton = document.createElement('button');
+    const buttonContainer = document.createElement('div');
+
+    // Style the buttons and container
+    buttonContainer.style.position = 'fixed';
+    buttonContainer.style.bottom = '20px'; 
+    buttonContainer.style.right = '30px';  
+    buttonContainer.style.zIndex = '9999'; 
+
+    startButton.innerText = 'Start';
+    startButton.style.marginRight = '10px';
+    startButton.style.padding = '6px 12px';  
+    startButton.style.backgroundColor = '#4CAF50';
+    startButton.style.color = '#fff';
+    startButton.style.border = 'none';
+    startButton.style.borderRadius = '4px'; // Fixed the property name
+    startButton.style.cursor = 'pointer';
+
+    stopButton.innerText = 'Stop';
+
+    stopButton.style.padding = '6px 12px'; 
+    stopButton.style.backgroundColor = '#f44336';
+    stopButton.style.color = '#fff';
+    stopButton.style.border = 'none';
+    stopButton.style.borderRadius = '4px'; 
+    stopButton.style.cursor = 'pointer';
+
+    // Add buttons to the container and container to the body
+    buttonContainer.appendChild(startButton);
+    buttonContainer.appendChild(stopButton);
+    document.body.appendChild(buttonContainer);
+
+    let intervalId = null;
+
     // Function to randomly click the "Send OTP" button if it exists
     function clickSendOTP() {
         var buttons = document.querySelectorAll('button'); // All button elements
@@ -81,6 +117,24 @@ Use developer tools and console. If console doesn't work, use paste permission "
         }
     }
 
-    // Run the function every 5 seconds
-    var intervalId = setInterval(clickSendOTP, 5000); // Try checking every 5 seconds
-})();
+    // Start button functionality
+    startButton.addEventListener('click', function() {
+        if (!intervalId) {
+            console.log("Starting the process...");
+            intervalId = setInterval(clickSendOTP, 5000); // Start the process every 5 seconds
+        } else {
+            console.log("Process is already running.");
+        }
+    });
+
+    // Stop button functionality
+    stopButton.addEventListener('click', function() {
+        if (intervalId) {
+            console.log("Stopping the process...");
+            clearInterval(intervalId); // Stop the interval
+            intervalId = null;
+        } else {
+            console.log("Process is not running.");
+        }
+    });
+})(); 
