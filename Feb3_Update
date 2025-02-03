@@ -36,8 +36,8 @@
         const buttons = document.querySelectorAll('button');
         let sendOTPButton = null;
         let okButton = null;
-        let paymentButton = null;
-        let otpVerifiedText = document.body.innerText.includes("OTP successfully verified");
+        let otpInput = document.querySelector('input[type="text"][name="otp"]');
+        let resendOTPButton = document.querySelector('button[name="resendOtp"]');
 
         buttons.forEach(button => {
             if (button.innerText && button.innerText.trim() === "Send OTP") {
@@ -46,60 +46,34 @@
             if (button.innerText && button.innerText.trim() === "OK") {
                 okButton = button;
             }
-            if (button.innerText && button.innerText.trim() === "Proceed to Payment") {
-                paymentButton = button;
-            }
         });
 
-        if (otpVerifiedText) {
-            console.log("OTP successfully verified. Selecting date and time...");
-            
-            const dateField = document.querySelector('input[type="date"]');
-            const timeField = document.querySelector('input[type="time"]');
-
-            if (dateField) {
-                const minDate = dateField.min || new Date().toISOString().split('T')[0];
-                dateField.value = minDate;
-                console.log("Date selected: " + dateField.value);
-            } else {
-                console.log("Date field not found.");
-            }
-
-            if (timeField) {
-                const availableTimes = timeField.list?.options || [];
-                if (availableTimes.length > 0) {
-                    timeField.value = availableTimes[0].value;
-                    console.log("Time selected: " + timeField.value);
-                } else {
-                    console.log("No time options available or list is not linked.");
-                }
-            } else {
-                console.log("Time field not found.");
-            }
-
-            if (paymentButton) {
-                console.log("Clicking the payment button...");
-                paymentButton.click();
-            } else {
-                console.log("Payment button not found.");
-            }
-
+        // Check if OTP input or Resend OTP button is visible
+        if (otpInput || resendOTPButton) {
+            console.log("OTP field or Resend OTP button is visible. Stopping the process.");
             clearInterval(intervalId);
             intervalId = null;
         } else if (waitingForPopup && okButton) {
-            console.log("Clicking OK button after 2 seconds...");
+            console.log("Clicking OK button to close popup...");
             setTimeout(() => {
                 okButton.click();
                 console.log("OK button clicked.");
                 waitingForPopup = false;
+                // After closing popup, click Send OTP again
+                setTimeout(() => {
+                    if (sendOTPButton) {
+                        sendOTPButton.click();
+                        console.log("Send OTP button clicked.");
+                    }
+                }, 1000); // Reduced wait time for quicker actions
             }, 2000);
         } else if (!waitingForPopup && sendOTPButton) {
-            console.log("Clicking Send OTP button after 2 seconds...");
+            console.log("Clicking Send OTP button...");
             setTimeout(() => {
                 sendOTPButton.click();
                 console.log("Send OTP button clicked.");
                 waitingForPopup = true;
-            }, 2000);
+            }, 1000);  // Reduced wait time for quicker actions
         } else {
             console.log("Waiting for the next check...");
         }
