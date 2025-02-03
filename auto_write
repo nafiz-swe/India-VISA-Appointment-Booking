@@ -1,0 +1,6 @@
+document.querySelector('textarea[name="visit_purpose"]').value = `I want to visit Kolkata to take the Goethe German language exam. In Bangladesh, the Goethe-Institut in Dhaka conducts the exam only once every few months, with only 60-70 seats available. However, each time, more than 400 students prepare for the exam, but due to the limited seats, many cannot take it at the right time.
+
+Over the past four years, around 80% of those Bangladeshi students who are learning German have traveled to Kolkata for the exam, as Kolkata Goethe-Institut conducts exams three times a month with a higher number of seats available. I have been trying to get a seat in Dhaka since last October but have not succeeded. Therefore, I want to take the exam at the Goethe-Institut in Kolkata.`;
+
+var event = new Event('input', { bubbles: true });
+document.querySelector('textarea[name="visit_purpose"]').dispatchEvent(event);
